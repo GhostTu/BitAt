@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+/*Създайте функция bitAt. Функцията получава
+параметър число и индекс. Тя връща стойността на бита
+на съответния индекс.*/
+
+// n- number , i- index
+int bitAt (int n , int i);
+extern int b; //Deklariram 
+void bin(unsigned n) 
+{ 
+    b=11; // Inicializirane
+    unsigned i; 
+    for (i = 1 << 7; i > 0; i = i >> 1 ) 
+    (n & i)? printf("1"): printf("0");
+    printf("\n"); 
+}
+
+int main()
+{
+    //5 = 0101 , index =2 => 1
+    int a= bitAt(15, 3); //15 =1111;
+    bin(128);
+    printf("b= %d\n", b);
+    //bitAt(7, 1);
+    printf("i is: %d\n",a );
+}
+
+int bitAt (int n , int i)
+{
+    // 1 = 0001
+    int mask = 1;
+    mask =mask<<i;
+    /* mask<<i; i=2 => mask = 0100 =4;*/
+    printf("mask: %d\n", mask);
+    /*5=0101 
+      4=0100  & 
+        0100
+    i=2, mask>>i => 0001*/
+
+    int result=n&mask;
+    printf("result : %d\n", result);
+    result =result>>i;
+    return result;
+
+}
+
+int b; //Definirane (Globalna promenliva!)
